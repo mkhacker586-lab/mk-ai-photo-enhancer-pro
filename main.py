@@ -102,7 +102,8 @@ def set_bot_commands():
         commands = [
             types.BotCommand("start", "🚀 𝐒𝐓𝐀𝐑𝐓 𝐀𝐈 𝐄𝐍𝐇𝐀𝐍𝐂𝐄𝐑"),
             types.BotCommand("channel", "📢 𝐉𝐎𝐈𝐍 𝐌.𝐊 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋 𝐂𝐇𝐀𝐍𝐍𝐄𝐋"),
-            types.BotCommand("contact", "💬 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐌.𝐊 𝐎𝐖𝐍𝐄𝐑 👑")
+            types.BotCommand("contact", "💬 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐌.𝐊 𝐎𝐖𝐍𝐄𝐑 👑"),
+            types.BotCommand("support", "ℹ️ 𝐇𝐄𝐋𝐏 & 𝐇𝐎𝐖 𝐓𝐎 𝐔𝐒𝐄")
         ]
         bot.set_my_commands(commands)
     except Exception as e:
@@ -180,7 +181,7 @@ def verify_user_membership(user_id):
     return False
 
 # ==========================================
-# 🤖 BOT HANDLERS (/start, /channel, /contact & Photos)
+# 🤖 BOT HANDLERS
 # ==========================================
 @bot.message_handler(commands=["start"])
 def send_welcome(message):
@@ -196,13 +197,13 @@ def send_welcome(message):
 
         bot.send_message(
             message.chat.id,
-            f"👋 𝐇𝐞𝐥𝐥𝐨 {user_name}!\n\n"
-            f"🚨 𝐒𝐘𝐒𝐓𝐄𝐌 𝐀𝐂𝐂𝐄𝐒𝐒 𝐑𝐄𝐒𝐓𝐑𝐈𝐂𝐓𝐄𝐃\n\n"
-            f"🔐 𝐉𝐨𝐢𝐧 𝐨𝐮𝐫 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 𝐭𝐨 𝐮𝐧𝐥𝐨𝐜𝐤 𝐛𝐨𝐭 𝐚𝐜𝐜𝐞𝐬𝐬.\n\n"
-            f"📌 𝐀𝐟𝐭𝐞𝐫 𝐣𝐨𝐢𝐧𝐢𝐧𝐠, 𝐜𝐥𝐢𝐜𝐤:\n"
-            f"✅ 𝐉𝐎𝐈𝐍𝐄𝐃 / 𝐂𝐎𝐍𝐅𝐈𝐑𝐌",
+            f"👋 <b>Hello {user_name}</b>!\n\n"
+            f"🚨 <b>SYSTEM ACCESS RESTRICTED</b>\n\n"
+            f"🔐 <i>Join our OFFICIAL CHANNEL to unlock bot access.</i>\n\n"
+            f"📌 <b>After joining, click:</b>\n"
+            f"✅ <b>JOINED / CONFIRM</b>",
             reply_markup=markup,
-            parse_mode="Markdown",
+            parse_mode="HTML",
         )
         return
 
@@ -212,35 +213,54 @@ def send_welcome(message):
 @bot.message_handler(commands=["channel"])
 def channel_command(message):
     markup = types.InlineKeyboardMarkup()
-    btn = types.InlineKeyboardButton("📢 𝐉𝐎𝐈𝐍 😈☠️ 𝐌.𝐊 𝐇𝐀𝐂𝐊𝐄𝐑 ☠️😈 𝐂𝐇𝐀𝐍𝐍𝐄𝐋", url=CHANNEL_INVITE_LINK)
+    btn = types.InlineKeyboardButton("📢 𝐉𝐎𝐈𝐍 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋 𝐂𝐇𝐀𝐍𝐍𝐄𝐋", url=CHANNEL_INVITE_LINK)
     markup.add(btn)
     bot.send_message(
         message.chat.id,
-        "📢 **𝐌.𝐊 𝐇𝐀𝐂𝐊𝐄𝐑 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋 𝐂𝐇𝐀𝐍𝐍𝐄𝐋**\n\n"
-        "✨ **𝐒𝐭𝐚𝐲 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 • 𝐒𝐭𝐚𝐲 𝐔𝐩𝐝𝐚𝐭𝐞𝐝**\n\n"
-        "🔥 𝐆𝐞𝐭 𝐭𝐡𝐞 𝐋𝐚𝐭𝐞𝐬𝐭 𝐔𝐩𝐝𝐚𝐭𝐞𝐬, 𝐍𝐞𝐰 𝐁𝐨𝐭 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬, "
-        "𝐀𝐧𝐧𝐨𝐮𝐧𝐜𝐞𝐦𝐞𝐧𝐭𝐬, 𝐚𝐧𝐝 𝐄𝐱𝐜𝐥𝐮𝐬𝐢𝐯𝐞 𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬 "
-        "𝐟𝐫𝐨𝐦 𝐌.𝐊 𝐇𝐀𝐂𝐊𝐄𝐑.\n\n"
-        "👇 **𝐓𝐚𝐩 𝐭𝐡𝐞 𝐁𝐮𝐭𝐭𝐨𝐧 𝐁𝐞𝐥𝐨𝐰 𝐭𝐨 𝐉𝐨𝐢𝐧 𝐎𝐮𝐫 𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𝐂𝐡𝐚𝐧𝐧𝐞𝐥!**",
+        "📢 <b>M.K HACKER OFFICIAL CHANNEL</b>\n\n"
+        "✨ <b>Stay Connected • Stay Updated</b>\n\n"
+        "🔥 Get the Latest Updates, New Bot Features, Announcements, and Exclusive Releases.\n\n"
+        "👇 <b>Tap the Button Below to Join!</b>",
         reply_markup=markup,
-        parse_mode="Markdown"
+        parse_mode="HTML"
     )
 
 @bot.message_handler(commands=["contact"])
 def contact_command(message):
     markup = types.InlineKeyboardMarkup()
-    btn = types.InlineKeyboardButton("💬 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 😈☠️ 𝐌.𝐊 𝐇𝐀𝐂𝐊𝐄𝐑 ☠️😈 𝐎𝐖𝐍𝐄𝐑", url=OWNER_CONTACT)
+    btn = types.InlineKeyboardButton("💬 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐌.𝐊 𝐎𝐖𝐍𝐄𝐑 👑", url=OWNER_CONTACT)
     markup.add(btn)
     bot.send_message(
         message.chat.id,
-        "💬 **𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐌.𝐊 𝐇𝐀𝐂𝐊𝐄𝐑 𝐎𝐖𝐍𝐄𝐑 👑**\n\n"
-        "⚡ **𝐍𝐞𝐞𝐝 𝐇𝐞𝐥𝐩, 𝐂𝐮𝐬𝐭𝐨𝐦 𝐁𝐨𝐭𝐬, 𝐨𝐫 𝐓𝐞𝐜𝐡𝐧𝐢𝐜𝐚𝐥 𝐒𝐮𝐩𝐩𝐨𝐫𝐭?**\n\n"
-        "🤖 𝐆𝐞𝐭 𝐇𝐞𝐥𝐩 𝐖𝐢𝐭𝐡 𝐁𝐨𝐭 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭, "
-        "𝐂𝐮𝐬𝐭𝐨𝐦 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬, 𝐚𝐧𝐝 𝐏𝐫𝐨𝐣𝐞𝐜𝐭 𝐈𝐧𝐪𝐮𝐢𝐫𝐢𝐞𝐬.\n\n"
-        "👑 **𝐃𝐢𝐫𝐞𝐜𝐭 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 • 𝐏𝐞𝐫𝐬𝐨𝐧𝐚𝐥𝐢𝐳𝐞𝐝 𝐒𝐮𝐩𝐩𝐨𝐫𝐭**\n\n"
-        "👇 **𝐓𝐚𝐩 𝐭𝐡𝐞 𝐁𝐮𝐭𝐭𝐨𝐧 𝐁𝐞𝐥𝐨𝐰 𝐭𝐨 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐭𝐡𝐞 𝐎𝐰𝐧𝐞𝐫!**",
+        "💬 👑 <b>CONTACT M.K HACKER OWNER</b> 👑\n\n"
+        "⚡ <b>Need Help, Custom Bots, or Technical Support?</b>\n\n"
+        "🤖 Get Help With Bot Development and Custom Features.\n\n"
+        "👇 <b>Tap the Button Below to Contact!</b>",
         reply_markup=markup,
-        parse_mode="Markdown"
+        parse_mode="HTML"
+    )
+
+@bot.message_handler(commands=["support"])
+def support_command(message):
+    markup = types.InlineKeyboardMarkup(row_width=2)
+    markup.add(
+        types.InlineKeyboardButton("🟢 2x / 4x Upscale Guide", callback_data="guide_upscale"),
+        types.InlineKeyboardButton("🔴 Remove BG Guide", callback_data="guide_bg")
+    )
+    markup.add(
+        types.InlineKeyboardButton("🔵 Contact Support", url=OWNER_CONTACT),
+        types.InlineKeyboardButton("🔙 Main Menu", callback_data="main_menu")
+    )
+    bot.send_message(
+        message.chat.id,
+        "ℹ️ ✨ <b>AI PHOTO ENHANCER GUIDE & FEATURES</b> ✨\n\n"
+        "<blockquote><b>What I Can Do:</b>\n"
+        "1️⃣ <b>2x & 4x HD Upscaling:</b> Turn blurry photos into crystal-clear HD images.\n"
+        "2️⃣ <b>Background Removal:</b> Instant clean cutouts.\n"
+        "3️⃣ <b>Data Log & History:</b> Secure session tracking.</blockquote>\n\n"
+        "👇 <b>Choose an option below:</b>",
+        reply_markup=markup,
+        parse_mode="HTML"
     )
 
 @bot.message_handler(content_types=['photo'])
@@ -265,8 +285,8 @@ def handle_photo(message):
     
     bot.reply_to(
         message,
-        "📸 <emoji id='5456146047602801948'>🔥</emoji> <b>IMAGE RECEIVED SUCCESSFULLY!</b> <emoji id='5456146047602801948'>🔥</emoji>\n\n"
-        "<i>Choose an action below to process your photo using AI:</i> <emoji id='5310565888204642875'>👇</emoji>",
+        "📸 🔥 <b>IMAGE RECEIVED SUCCESSFULLY!</b> 🔥\n\n"
+        "<i>Choose an action below to process your photo using AI:</i> 👇",
         parse_mode="HTML",
         reply_markup=markup
     )
@@ -295,32 +315,32 @@ def handle_callbacks(call):
         bot.answer_callback_query(call.id)
         show_main_menu(call.message.chat.id, user_name)
         
-    elif call.data in ["upscale_2x", "upscale_4x", "remove_bg"]:
-        bot.answer_callback_query(call.id, "⚡ Processing photo with AI...", show_alert=False)
+    elif call.data in ["upscale_2x", "upscale_4x", "remove_bg", "guide_upscale", "guide_bg"]:
+        bot.answer_callback_query(call.id, "⚡ Processing...", show_alert=False)
         bot.send_message(
             call.message.chat.id,
-            "✨ <b>AI Processing in progress...</b>\n<i>Please wait a few seconds while your photo is enhanced!</i> <emoji id='5341443659973815042'>✨</emoji>",
+            "✨ <b>AI Processing in progress...</b>\n<i>Please wait a few seconds while your photo is enhanced!</i> 🟢",
             parse_mode="HTML"
         )
 
 def show_main_menu(chat_id, user_name):
     markup = types.InlineKeyboardMarkup(row_width=2)
     markup.add(
-        types.InlineKeyboardButton("✨ Enhance Image (2x/4x)", callback_data="upscale_2x"),
-        types.InlineKeyboardButton("✂️ Remove Background", callback_data="remove_bg")
+        types.InlineKeyboardButton("🟢 Enhance Image (2x/4x)", callback_data="upscale_2x"),
+        types.InlineKeyboardButton("🔴 Remove Background", callback_data="remove_bg")
     )
     markup.add(
-        types.InlineKeyboardButton("📢 Official Channel", url=CHANNEL_INVITE_LINK),
-        types.InlineKeyboardButton("💬 Contact Owner", url=OWNER_CONTACT)
+        types.InlineKeyboardButton("🔵 Bot Guide & Support", callback_data="main_menu"),
+        types.InlineKeyboardButton("🟣 Contact Owner", url=OWNER_CONTACT)
     )
 
     menu_text = (
-        f"⚡️ <emoji id='5456146047602801948'>🔥</emoji> <b>WELCOME, {user_name.upper()}</b> <emoji id='5456146047602801948'>🔥</emoji>\n\n"
+        f"⚡️ 🔥 <b>WELCOME, {user_name.upper()}</b> 🔥\n\n"
         f"<b>{BOT_NAME}</b>\n\n"
-        f"<i>Turn blurry photos into crisp, high-quality HD images in one tap!</i> <emoji id='5341443659973815042'>✨</emoji>\n\n"
-        f"• Status: <b>Online & Active</b> <emoji id='5431665477757912445'>🟢</emoji>\n"
-        f"• Credits Left: <b>2 Free Credits</b> <emoji id='5432174577415421111'>🎁</emoji>\n\n"
-        f"<blockquote><b>Send me an image or choose an option below:</b> <emoji id='5310565888204642875'>👇</emoji></blockquote>"
+        f"<i>Turn blurry photos into crisp, high-quality HD images in one tap!</i> ✨\n\n"
+        f"• Status: <b>Online & Active</b> 🟢\n"
+        f"• Credits Left: <b>2 Free Credits</b> 🎁\n\n"
+        f"<blockquote><b>Send me an image or choose an option below:</b> 👇</blockquote>"
     )
 
     bot.send_message(
