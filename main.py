@@ -10,7 +10,7 @@ from telebot import types
 # ⚙ M.K HACKER SETTINGS & BOT CREDENTIALS:
 # ==========================================
 TOKEN = os.environ.get(
-    "BOT_TOKEN", "8891413386:AAEDJkXrzf7_BA_urUlNtvyhHAIJRU6TZnU"
+    "BOT_TOKEN", "9062431598:AAFuuI5MoCBRWIApQfWpdQvUVZ2yE8ZUWdY"
 )
 bot = telebot.TeleBot(TOKEN, threaded=False)
 
